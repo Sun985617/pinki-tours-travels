@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pinki Tours & Travels — Mobile Friendly</title>
+  <meta name="description" content="Pinki Tours & Travels — cinematic, mobile-first travel agency. Book, enquire on WhatsApp and explore curated tours." />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- Base / Variables (mobile-first) ---------- */
+    :root{
+      --bg:#06060a;
+      --card:#0f1724;
+      --muted:#9aa3b2;
+      --accent:#f7b733; /* warm gold */
+      --accent-2:#ff6b6b; /* coral */
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --max-width:1100px;
+      --safe-pad:16px;
+      --shadow: 0 8px 30px rgba(2,6,23,0.6);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,#021226 0%, #05060a 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.35;
+      padding:calc(env(safe-area-inset-top,0px) + 8px) 0 calc(env(safe-area-inset-bottom,0px) + 80px) 0;
+      display:flex;
+      justify-content:center;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--max-width);
+      padding:0 var(--safe-pad);
+    }
+
+    /* ---------- Header / Hero ---------- */
+    header{
+      position:sticky;
+      top:0;
+      backdrop-filter: blur(6px) saturate(130%);
+      background:linear-gradient(180deg, rgba(5,6,10,0.6), rgba(5,6,10,0.18));
+      z-index:60;
+      padding:10px var(--safe-pad);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      border-bottom:1px solid rgba(255,255,255,0.02);
+    }
+    .brand{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .logo{
+      width:44px;height:44px;border-radius:12px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow:0 6px 18px rgba(247,183,51,0.15), inset 0 -6px 12px rgba(0,0,0,0.2);
+      font-weight:800;color:#08101a;
+      font-size:18px;
+    }
+    .brand h1{font-size:15px;margin:0;line-height:1;}
+    .brand p{margin:0;font-size:11px;color:var(--muted);}
+
+    .cta{
+      display:flex;gap:8px;align-items:center;
+    }
+    .btn{
+      background:linear-gradient(90deg,var(--accent),#f08a24);
+      border:none;color:#071018;padding:9px 12px;border-radius:12px;font-weight:600;
+      box-shadow:var(--shadow);
+      display:inline-flex;gap:8px;align-items:center;text-decoration:none;
+    }
+    .ghost{
+      background:transparent;border:1px solid rgba(255,255,255,0.06);padding:9px 10px;border-radius:12px;color:var(--muted);
+    }
+
+    main{margin-top:12px;}
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:20px;
+      min-height:360px;
+      display:flex;
+      align-items:flex-end;
+      padding:22px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.6)),
+        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3e8b49410d6fb6b8a3f0b7d4ab3adf42') center/cover no-repeat;
+      box-shadow:var(--shadow), inset 0 0 120px rgba(0,0,0,0.25);
+      color: #fff;
+    }
+
+    /* Parallax subtle layer */
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        radial-gradient(600px 200px at 10% 10%, rgba(255,183,77,0.10), transparent 10%),
+        radial-gradient(300px 120px at 90% 70%, rgba(255,107,107,0.06), transparent 25%);
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+
+    .hero-content{
+      position:relative;z-index:2;max-width:680px;
+    }
+    .kicker{font-size:12px;color:var(--muted);letter-spacing:1px;margin-bottom:8px}
+    .title{
+      font-size:28px;margin:0 0 6px 0;font-weight:800;line-height:1.02;
+      text-shadow:0 10px 30px rgba(1,10,20,0.6);
+    }
+    .subtitle{color:var(--muted);margin:0 0 14px 0;font-size:14px}
+
+    .hero-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .stat-row{display:flex;gap:12px;margin-top:14px}
+    .stat{background:var(--glass);padding:8px 12px;border-radius:12px;font-size:13px;color:var(--muted);display:inline-flex;gap:8px;align-items:center}
+
+    /* ---------- Sections ---------- */
+    section{margin-top:20px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:16px;padding:14px;
+      box-shadow: 0 6px 24px rgba(4,8,16,0.45);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .services{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .service{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);display:flex;gap:12px;align-items:flex-start}
+    .service .ic{
+      width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-weight:700;color:#071018
+    }
+    .service h3{margin:0;font-size:14px}
+    .service p{margin:4px 0 0 0;font-size:12px;color:var(--muted)}
+
+    /* Gallery horizontal scroller */
+    .gallery{
+      display:flex;overflow-x:auto;gap:10px;padding-bottom:6px;
+      -webkit-overflow-scrolling:touch;
+    }
+    .gallery img{min-width:220px;height:140px;border-radius:12px;object-fit:cover;display:block;box-shadow:0 8px 20px rgba(0,0,0,0.45);}
+
+    /* Form */
+    form .row{display:flex;gap:8px;flex-direction:column}
+    label{font-size:12px;color:var(--muted);margin-bottom:6px}
+    input,textarea,select{
+      background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:10px;color:inherit;font-size:13px;
+    }
+    textarea{min-height:90px;resize:vertical}
+    .form-cta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+    .small{font-size:12px;color:var(--muted)}
+
+    /* Footer */
+    footer{margin-top:24px;padding:18px 0 60px;color:var(--muted);text-align:center;font-size:13px}
+
+    /* WhatsApp Floating Button */
+    .whatsapp{
+      position:fixed;right:16px;bottom:24px;z-index:90;
+      display:flex;flex-direction:column;gap:10px;align-items:end;
+    }
+    .wa-btn{
+      display:inline-flex;align-items:center;gap:10px;padding:12px 14px;border-radius:999px;background:linear-gradient(90deg,#25D366,#1DA851);
+      color:#042018;font-weight:700;text-decoration:none;box-shadow:0 10px 30px rgba(37,211,102,0.18);
+    }
+    .wa-mini{
+      width:56px;height:56px;border-radius:999px;background:linear-gradient(90deg,#25D366,#1DA851);display:grid;place-items:center;font-weight:800;color:#042018;box-shadow:0 10px 30px rgba(37,211,102,0.12)
+    }
+
+    /* Responsive tweaks */
+    @media(min-width:720px){
+      .hero{min-height:460px;border-radius:24px;padding:32px}
+      .title{font-size:44px}
+      .services{grid-template-columns:repeat(3,1fr)}
+      .gallery img{min-width:300px;height:180px}
+    }
+
+    /* Micro animations */
+    .btn, .wa-btn, .wa-mini{transition:transform .18s ease, box-shadow .18s ease}
+    .btn:active, .wa-btn:active, .wa-mini:active{transform:translateY(2px) scale(.995)}
+    .hero [data-fade]{opacity:0; transform:translateY(8px);animation:fadeUp .8s forwards; animation-delay: var(--delay,0s)}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+
+    /* focus */
+    a:focus, button:focus, input:focus, textarea:focus{outline:3px solid rgba(247,183,51,0.12); outline-offset:3px}
+  </style>
+</head>
+<body>
+  <div class="wrap" role="document">
+    <header aria-label="Top navigation">
+      <div class="brand" onclick="scrollToTop()" style="cursor:pointer">
+        <div class="logo" aria-hidden="true">P</div>
+        <div>
+          <h1>Pinki Tours & Travels</h1>
+          <p>Silchar • Personalized Tours • Mobile First</p>
+        </div>
+      </div>
+
+      <div class="cta" role="toolbar" aria-label="Quick actions">
+        <a class="ghost" href="#services" title="Our services">Services</a>
+        <a class="btn" href="#booking" title="Book now">Book Now</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero card" aria-label="Hero — cinematic">
+        <div class="hero-content">
+          <div class="kicker" data-fade style="--delay:.05s">LOCAL. LUXURY. MEMORABLE.</div>
+          <h2 class="title" data-fade style="--delay:.12s">Discover Assam & Northeast with cinematic journeys</h2>
+          <p class="subtitle" data-fade style="--delay:.18s">Tailor-made itineraries, local guides, and mobile-friendly booking. Let Pinki plan your next unforgettable trip.</p>
+
+          <div class="hero-actions" data-fade style="--delay:.26s">
+            <a class="btn" href="#booking">Reserve a slot</a>
+            <a class="ghost" href="#contact">Contact</a>
+          </div>
+
+          <div class="stat-row" data-fade style="--delay:.34s" aria-hidden="true">
+            <div class="stat">⭐ 4.9 rating</div>
+            <div class="stat">✈️ 200+ tours</div>
+            <div class="stat">🧑‍💼 Local guides</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services">
+        <h3 style="margin:12px 6px 8px 6px;font-size:15px">What we offer</h3>
+        <div class="services">
+          <div class="service card">
+            <div class="ic">TR</div>
+            <div>
+              <h3>Tailor-made Trips</h3>
+              <p>Personalised itineraries — family trips, honeymoon packages, adventure trails.</p>
+            </div>
+          </div>
+
+          <div class="service card">
+            <div class="ic">LK</div>
+            <div>
+              <h3>Local Knowledge Assam Silchar</h3>
+              <p>Local guides, hidden gems, food experiences curated for you.</p>
+            </div>
+          </div>
+
+          <div class="service card">
+            <div class="ic">HT</div>
+            <div>
+              <h3>Any were in Assam or Northeast</h3>
+              <p>Handpicked stays, comfortable transfers and safety-first travel plans.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section aria-label="Gallery">
+        <h3 style="margin:12px 6px 8px 6px;font-size:15px">Gallery</h3>
+        <div class="gallery" role="list">
+  <img src="images/pkg-guwahati.png" alt="Trip Image 1" loading="lazy">
+  <img src="images/pkg-haflong.png" alt="Trip Image 2" loading="lazy">
+  <img src="images/pkg-tripura.png" alt="Trip Image 3" loading="lazy">
+</div>
+
+      </section>
+
+      <!-- Booking / Lead form -->
+      <section id="booking" style="margin-top:18px">
+        <div class="card">
+          <h3 style="margin:0 0 8px 0">Book / Enquiry</h3>
+          <p class="small">Quick enquiry: fill name, dates and message. We'll WhatsApp you back within a few hours.</p>
+
+          <form id="leadForm" novalidate autocomplete="on" aria-label="Booking form">
+            <div class="row" style="margin-top:12px">
+              <label for="name">Full name</label>
+              <input id="name" name="name" required placeholder="Your name" type="text">
+            </div>
+
+            <div class="row" style="margin-top:12px">
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" inputmode="tel" required placeholder="+91 9xxxxxxxxx" type="tel">
+            </div>
+
+            <div class="row" style="margin-top:12px">
+              <label for="dates">Travel dates (approx.)</label>
+              <input id="dates" name="dates" placeholder="e.g., 10 - 14 Dec 2025" type="text">
+            </div>
+
+            <div class="row" style="margin-top:12px">
+              <label for="message">Message / Request</label>
+              <textarea id="message" name="message" placeholder="Tell us what you want — trip style, budget, number of travelers"></textarea>
+            </div>
+
+            <div class="form-cta">
+  <button class="btn" type="submit">Send Enquiry</button>
+
+  <!-- WhatsApp Link Added -->
+  <a class="ghost" 
+     href="https://wa.me/918638377338?text=Hi%20Pinki%20Tours%20%26%20Travels%2C%20I%20want%20to%20book%20a%20trip" 
+     id="waQuick" 
+     target="_blank"
+     title="Message on WhatsApp">
+     Message on WhatsApp
+  </a>
+
+  <div class="small" id="formNote" aria-live="polite"></div>
+</div>
+
+      </section>
+
+      <!-- Testimonials -->
+      <section style="margin-top:18px">
+        <h3 style="margin:6px 6px 8px 6px;font-size:15px">Traveller Stories</h3>
+       
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" style="margin-top:18px">
+        <h3 style="margin:6px 6px 8px 6px;font-size:15px">Contact</h3>
+        <div class="card" style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-weight:800;color:#071018">P</div>
+            <div>
+              <strong>Pinki Tours & Travels</strong>
+              <div style="color:var(--muted);font-size:13px">Silchar, Assam • open Mon-Sat</div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div class="small">Phone / WhatsApp</div>
+            <!-- Replace phone number below with your actual business number in international format -->
+            <a href="https://wa.me/918638377338?text=Hi%20Pinki%20Tours%20%26%20Travels%2C%20I%27m%20interested%20in%20a%20trip" class="btn" id="mainWhatsApp">+918638377338/919394346753</a>
+            <div class="small">Email</div>
+            <a href="mailto:pinkitoursandtravels21@gmail.com" class="ghost">pinkitoursandtravels21@gmail.com</a>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div>© <span id="year"></span> Pinki Tours & Travels • Crafted for mobile</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Floating WhatsApp -->
+  <div class="whatsapp" aria-hidden="false">
+    <a class="wa-btn" id="waAction" href="#" rel="noopener" target="_blank" title="Chat with us on WhatsApp">
+      <svg style="width:20px;height:20px" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M...Z" fill="white"></path>
+      </svg>
+      Chat on WhatsApp
+    </a>
+   
+  </div>
+
+  <script>
+    /**********************
+     * Configuration
+     * Replace the phone below with your business WhatsApp number in E.164 format (country code + number, no + or dashes).
+     * Example: '919812345678' for +91 9812345678
+     **********************/
+    const BUSINESS_WA_NUMBER = '918638377338'; // <-- REPLACE THIS
+    const DEFAULT_MSG = encodeURIComponent('Hi Pinki Tours & Travels, I would like information about travel packages.');
+
+    // Set dynamic links and footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function waLink(msg){
+      return `https://wa.me/${BUSINESS_WA_NUMBER}?text=${msg || DEFAULT_MSG}`;
+    }
+    document.getElementById('mainWhatsApp').href = waLink();
+    document.getElementById('waAction').href = waLink();
+    document.getElementById('waMini').href = waLink();
+
+    // Scroll to top utility
+    function scrollToTop(){ window.scrollTo({top:0,behavior:'smooth'}); }
+
+    // Booking form handling (client-side)
+    const form = document.getElementById('leadForm');
+    const note = document.getElementById('formNote');
+    const waQuick = document.getElementById('waQuick');
+
+    waQuick.addEventListener('click', (e)=>{
+      e.preventDefault();
+      // open WhatsApp with prefilled message
+      window.open(waLink(), '_blank');
+    });
+
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      // simple validation
+      const name = form.name.value.trim();
+      const phone = form.phone.value.trim();
+      if(!name || !phone){
+        note.textContent = 'Please enter name and phone number.';
+        setTimeout(()=> note.textContent='',3000);
+        return;
+      }
+
+      // Prepare message summary
+      const dates = form.dates.value.trim();
+      const message = form.message.value.trim();
+      const text = encodeURIComponent(`Hi Pinki Tours, I'm ${name}. Phone: ${phone}. Dates: ${dates || 'flexible'}. Message: ${message || '—'}`);
+
+      // Offer to send via WhatsApp (quick) or emulate a successful submission
+      const waUrl = `https://wa.me/${BUSINESS_WA_NUMBER}?text=${text}`;
+      // Open WhatsApp chat in new tab/window
+      window.open(waUrl, '_blank');
+
+      // Visual feedback
+      note.textContent = 'Opening WhatsApp...';
+      setTimeout(()=> note.textContent = 'We will contact you shortly on WhatsApp.', 1000);
+      form.reset();
+    });
+
+    // Add small reveal delays to elements with data-fade
+    document.addEventListener('DOMContentLoaded', () => {
+      const els = document.querySelectorAll('[data-fade]');
+      els.forEach(el=>{
+        // keep existing inline --delay var, otherwise stagger
+        el.style.setProperty('--delay', el.style.getPropertyValue('--delay') || (Math.random()*0.4+'s'));
+      });
+    });
+
+    // Accessibility: keyboard shortcut 'w' to open WhatsApp (desktop convenience)
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'w' && (e.ctrlKey || e.metaKey) === false){
+        window.open(waLink(), '_blank');
+      }
+    });
+
+    // Simple progressive enhancement: replace hero background for slower connections?
+    // (Left as placeholder for future lazy-loading)
+  </script>
+</body>
+</html>
